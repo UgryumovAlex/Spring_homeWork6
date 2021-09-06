@@ -14,7 +14,7 @@
 
 <ul>
     <c:forEach var="product" items="${products}">
-        <li>Id : ${product.id}; Title : ${product.title}; Cost : ${product.cost}</li>
+        <li>Id : ${product.id}; Title : ${product.title}; Cost : ${product.price}</li>
     </c:forEach>
 </ul>
 
