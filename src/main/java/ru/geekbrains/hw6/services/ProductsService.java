@@ -9,6 +9,7 @@ import ru.geekbrains.hw6.repositories.ProductsPageRepository;
 import ru.geekbrains.hw6.repositories.ProductsRepository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -45,5 +46,18 @@ public class ProductsService {
     public List<Product> getProductByPage(int pageNum) {
         Page<Product> pr = productsPageRepository.findAll(PageRequest.of(pageNum,5));
         return pr.stream().collect(Collectors.toList());
+    }
+
+    public Product getProductById(Long id) {
+        Optional<Product> product = productsRepository.findById(id);
+        return product.orElse(null);
+    }
+
+    public void deleteProductById(Long id) {
+        productsRepository.deleteById(id);
+    }
+
+    public Product addNewProduct(Product product) {
+        return productsRepository.save(product);
     }
 }
